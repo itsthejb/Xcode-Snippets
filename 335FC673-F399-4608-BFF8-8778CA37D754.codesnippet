@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>flatm</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>@interface UIColor (FlatUIColorsPrivate)
++ (instancetype) flat_colorWithString:(NSString*) string;
++ (NSArray*) flat_colorSelectorArray;
+@end
+
+@implementation UIColor (FlatUIColors)
+
++ (instancetype)flat_colorWithString:(NSString *)string {
+  static NSCache *cache = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&amp;onceToken, ^{
+    cache = [[NSCache alloc] init];
+  });
+
+  UIColor *cachedColour = [cache objectForKey:string];
+  if (!cachedColour) {
+    NSArray *components = [string componentsSeparatedByString:@","];
+    cachedColour = [UIColor colorWithRed:[components[0] floatValue] / 255
+                                   green:[components[1] floatValue] / 255
+                                    blue:[components[2] floatValue] / 255
+                                   alpha:1.0];
+    [cache setObject:cachedColour forKey:string];
+  }
+  return cachedColour;
+}
+
++ (NSArray *)flat_colorSelectorArray {
+  static NSArray *selectors = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&amp;onceToken, ^{
+    selectors = @[
+                  @"flat_turquoise",
+                  @"flat_emerald",
+                  @"flat_peterRiver",
+                  @"flat_amethyst",
+                  @"flat_wetAsphalt",
+                  @"flat_greenSea",
+                  @"flat_nephritis",
+                  @"flat_belizeHole",
+                  @"flat_wisteria",
+                  @"flat_midnightBlue",
+                  @"flat_sunFlower",
+                  @"flat_carrot",
+                  @"flat_alizarin",
+                  @"flat_clouds",
+                  @"flat_concrete",
+                  @"flat_orange",
+                  @"flat_pumpkin",
+                  @"flat_pomegranate",
+                  @"flat_silver",
+                  @"flat_asbestos",
+                  ];
+  });
+  return selectors;
+}
+
++ (NSUInteger)flat_numberOfColors {
+  return [self flat_colorSelectorArray].count;
+}
+
++ (instancetype)flat_colorAtIndex:(NSUInteger)index {
+  NSParameterAssert(index &lt; [self flat_numberOfColors]);
+  NSArray *selectors = [self flat_colorSelectorArray];
+  NSString *selectorString = selectors[index];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+  return [UIColor performSelector:NSSelectorFromString(selectorString)];
+#pragma clang diagnostic pop
+}
+
++ (instancetype)flat_random {
+  return [self flat_colorAtIndex:arc4random() % [self flat_numberOfColors]];
+}
+
++ (instancetype) flat_turquoise     { return [self flat_colorWithString:@"026, 188, 156"]; }
++ (instancetype) flat_emerald       { return [self flat_colorWithString:@"046, 204, 113"]; }
++ (instancetype) flat_peterRiver    { return [self flat_colorWithString:@"052, 152, 219"]; }
++ (instancetype) flat_amethyst      { return [self flat_colorWithString:@"155, 089, 182"]; }
++ (instancetype) flat_wetAsphalt    { return [self flat_colorWithString:@"052, 073, 094"]; }
++ (instancetype) flat_greenSea      { return [self flat_colorWithString:@"022, 160, 133"]; }
++ (instancetype) flat_nephritis     { return [self flat_colorWithString:@"039, 174, 096"]; }
++ (instancetype) flat_belizeHole    { return [self flat_colorWithString:@"041, 128, 185"]; }
++ (instancetype) flat_wisteria      { return [self flat_colorWithString:@"142, 068, 173"]; }
++ (instancetype) flat_midnightBlue  { return [self flat_colorWithString:@"044, 062, 080"]; }
++ (instancetype) flat_sunFlower     { return [self flat_colorWithString:@"241, 196, 015"]; }
++ (instancetype) flat_carrot        { return [self flat_colorWithString:@"230, 126, 034"]; }
++ (instancetype) flat_alizarin      { return [self flat_colorWithString:@"231, 076, 060"]; }
++ (instancetype) flat_clouds        { return [self flat_colorWithString:@"236, 240, 241"]; }
++ (instancetype) flat_concrete      { return [self flat_colorWithString:@"149, 165, 166"]; }
++ (instancetype) flat_orange        { return [self flat_colorWithString:@"243, 156, 018"]; }
++ (instancetype) flat_pumpkin       { return [self flat_colorWithString:@"211, 084, 000"]; }
++ (instancetype) flat_pomegranate   { return [self flat_colorWithString:@"192, 057, 043"]; }
++ (instancetype) flat_silver        { return [self flat_colorWithString:@"189, 195, 199"]; }
++ (instancetype) flat_asbestos      { return [self flat_colorWithString:@"127, 140, 141"]; }
+
+@end
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>335FC673-F399-4608-BFF8-8778CA37D754</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Implementation file for UIColor Category</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>FlatUI Colours Implementation</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

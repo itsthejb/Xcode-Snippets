@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>flatheader</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//  Colours courtesty of http://flatuicolors.com/
+@interface UIColor (FlatUIColors)
+
++ (instancetype) flat_turquoise;
++ (instancetype) flat_emerald;
++ (instancetype) flat_peterRiver;
++ (instancetype) flat_amethyst;
++ (instancetype) flat_wetAsphalt;
++ (instancetype) flat_greenSea;
++ (instancetype) flat_nephritis;
++ (instancetype) flat_belizeHole;
++ (instancetype) flat_wisteria;
++ (instancetype) flat_midnightBlue;
++ (instancetype) flat_sunFlower;
++ (instancetype) flat_carrot;
++ (instancetype) flat_alizarin;
++ (instancetype) flat_clouds;
++ (instancetype) flat_concrete;
++ (instancetype) flat_orange;
++ (instancetype) flat_pumpkin;
++ (instancetype) flat_pomegranate;
++ (instancetype) flat_silver;
++ (instancetype) flat_asbestos;
+
++ (instancetype) flat_random;
+
++ (NSUInteger)   flat_numberOfColors;
++ (instancetype) flat_colorAtIndex:(NSUInteger) index;
+
+@end
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>04A48176-74B7-49A3-87F1-B2DC21630DB0</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Header File for UIColor Category</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>FlatUI Colours Header</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
